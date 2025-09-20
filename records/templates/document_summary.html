@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card shadow p-4">
+  <h2 class="mb-3">Upload Medical Document for Summary</h2>
+
+  <form method="post" enctype="multipart/form-data" class="mb-4">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Upload & Summarize</button>
+  </form>
+
+  {% if original_text %}
+    <h5>Original Text</h5>
+    <pre class="border p-3 bg-light">{{ original_text }}</pre>
+  {% endif %}
+
+  {% if summary %}
+    <h5>AI Summary</h5>
+    <div class="alert alert-info">{{ summary }}</div>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+<section class="animate-fade-in">
+  <div class="card shadow-card">
+    <div class="card-header">
+      <h2 class="card-title text-danger">⚠️ Live Disease Warnings</h2>
+    </div>
+    <div class="card-content">
+      {% for alert in alerts %}
+        <div class="alert alert-{{ alert.severity }}">
+          <strong>{{ alert.title }}</strong> - {{ alert.location }} <br>
+          <small>{{ alert.date_issued|date:"M d, Y H:i" }}</small>
+          <p>{{ alert.description }}</p>
+          <span class="badge bg-secondary">Source: {{ alert.source }}</span>
+        </div>
+      {% empty %}
+        <p>No live warnings right now ✅</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>

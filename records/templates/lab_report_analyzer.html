@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Upload Lab Report</h2>
+  <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="file" name="report" accept=".txt,.pdf" required>
+      <button type="submit">Analyze</button>
+  </form>
+
+  {% if original_text %}
+      <h3>Original Report</h3>
+      <pre>{{ original_text }}</pre>
+  {% endif %}
+
+  {% if summary_en %}
+      <h3>Summary (English)</h3>
+      <p>{{ summary_en }}</p>
+
+      <h3>सारांश (Hindi)</h3>
+      <p>{{ summary_hi }}</p>
+
+      <h3>സംഗ്രഹം (Malayalam)</h3>
+      <p>{{ summary_ml }}</p>
+  {% endif %}
+{% endblock %}

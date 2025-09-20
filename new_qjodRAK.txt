@@ -1,0 +1,21 @@
+Patient Name: Ramesh Kumar
+Age: 42
+Gender: Male
+
+Clinical Notes:
+The patient presented with high fever, chills, and persistent cough for the past 5 days. 
+Upon examination, his temperature was 102°F, pulse rate 110/min, and mild respiratory distress was noted. 
+Chest auscultation revealed crackles in the right lower lobe. 
+No history of diabetes or hypertension. Patient is a non-smoker.
+
+Diagnosis:
+Suspected pneumonia.
+
+Treatment Plan:
+Started on intravenous antibiotics (Ceftriaxone 1g twice daily) and oral paracetamol for fever. 
+Advised complete bed rest and increased fluid intake. 
+Follow-up chest X-ray recommended after 5 days.
+
+Doctor’s Notes:
+Condition stable but requires monitoring for possible complications like pleural effusion. 
+Family advised to watch for worsening shortness of breath.

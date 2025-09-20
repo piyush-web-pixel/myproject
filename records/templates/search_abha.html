@@ -1,0 +1,26 @@
+<h2>Search ABHA ID</h2>
+<form method="post">
+  {% csrf_token %}
+  <label>Enter ABHA ID:</label>
+  <input type="text" name="abha_id" required>
+  <button type="submit">Search</button>
+</form>
+
+
+
+
+
+{% if error %}
+  <p style="color:red">{{ error }}</p>
+{% endif %}
+
+{% if profile %}
+  <h3>ABHA Profile</h3>
+  <ul>
+    <li><b>Name:</b> {{ profile.name }}</li>
+    <li><b>Gender:</b> {{ profile.gender }}</li>
+    <li><b>DOB:</b> {{ profile.yearOfBirth }}</li>
+    <li><b>ABHA ID:</b> {{ profile.healthId }}</li>
+    <li><b>Mobile:</b> {{ profile.mobile }}</li>
+  </ul>
+{% endif %}

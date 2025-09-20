@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Digital Health Record</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            /* background-color: #ffffff; */
+            background: linear-gradient(135deg, #43e97b, #38f9d7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 100px rgba(0,0,0,0.3);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h2 {
+            text-align: center;
+            color: #419c64;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        input {
+            width: 93%;
+            padding: 0.75rem;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        input:focus {
+            border-color: #419c64;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(0,123,255,0.2);
+        }
+
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #ffffff;
+            /* background: linear-gradient(135deg, #43e97b, #38f9d7); */
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+            border: 1px solid #419c64 ;
+        }
+
+        button:hover {
+           background: linear-gradient(135deg, #43e97b, #38f9d7);
+           transition: all 0.3s ease;
+           color: white;
+           /* box-shadow: 0 0 0 2px rgba(0, 0, 0, 1); */
+        }
+
+        p {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        a {
+            color: #419c64;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Error message styling */
+        .errorlist {
+            color: red;
+            font-size: 0.85rem;
+            margin: 0.25rem 0 0.5rem;
+            list-style: none;
+            padding: 0;
+        }
+        .box{ 
+            border: 2px solid #419c64;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Create an Account</h2>
+        <form method="POST">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="id_username">Username</label>
+                {{ form.username }}
+                {{ form.username.errors }}
+            </div>
+
+            <div class="form-group">
+                <label for="id_email">Email</label>
+                {{ form.email }}
+                {{ form.email.errors }}
+            </div>
+
+            <div class="form-group">
+                <label for="id_password1">Password</label>
+                {{ form.password1 }}
+                {{ form.password1.errors }}
+            </div>
+
+            <div class="form-group">
+                <label for="id_password2">Confirm Password</label>
+                {{ form.password2 }}
+                {{ form.password2.errors }}
+            </div>
+
+            <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+    </div>
+</body>
+</html>

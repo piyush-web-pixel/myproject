@@ -1,0 +1,9 @@
+<form method="post">
+  {% csrf_token %}
+  <label>Age:</label><input type="number" name="age" required><br>
+  <label>Blood Pressure (BP):</label><input type="number" name="bp" required><br>
+  <label>Sugar Level:</label><input type="number" name="sugar" required><br>
+  <label>Cholesterol:</label><input type="number" name="chol" required><br>
+  <label>BMI:</label><input type="number" name="bmi" required><br>
+  <button type="submit">Predict Disease</button>
+</form>

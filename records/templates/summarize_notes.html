@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Doctor Notes Summary</h2>
+
+<p><strong>Original Notes:</strong></p>
+<p>{{ record.doctor_notes }}</p>
+
+<hr>
+
+<p><strong>AI Summary:</strong></p>
+<div class="alert alert-info">{{ summary }}</div>
+
+<a href="{% url 'worker_detail' record.worker.id %}" class="btn btn-secondary mt-3">⬅ Back to Worker</a>
+{% endblock %}

@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Health Record</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0fdf4;
+            transition: background-color 0.3s ease;
+        }
+
+        .health-record-container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1rem;
+            animation: fade-in 0.6s ease-out;
+        }
+
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .health-record-card {
+            background-color: white;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .health-record-card:hover {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        h2.section-title {
+            color: #166534;
+            font-size: 2.25rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .text-muted {
+            color: #4b5563;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        /* Styling for Django form fields */
+        form label {
+            display: block;
+            color: #166534;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        form input,
+        form select,
+        form textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            border: 1px solid #d1d5db;
+            transition: all 0.2s ease-in-out;
+        }
+
+        form input:focus,
+        form select:focus,
+        form textarea:focus {
+            outline: none;
+            border-color: #419c64;
+            box-shadow: 0 0 0 2px rgba(65, 156, 100, 0.25);
+        }
+        
+        /* Submit button */
+        .save-button {
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            font-weight: 600;
+            width:100%;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            border: px solid #2e7a4a;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            /* border: none; */
+            cursor: pointer;
+        }
+
+        .save-button:hover {
+            background-color: #2e7a4a;
+            color: #f0fdf4;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+
+    </style>
+</head>
+<body class="p-6 md:p-10">
+
+    <div class="health-record-container">
+        <!-- Page Header -->
+        <div class="dashboard-header mb-4">
+            <h2 class="section-title animate-fade-in">🩺 Add Health Record</h2>
+            <p class="text-muted">Add a new health record for <strong>{{ worker.name }}</strong></p>
+        </div>
+
+        <!-- Health Record Form Card -->
+        <section class="animate-slide-up">
+            <div class="health-record-card">
+                <form method="POST" novalidate>
+                    {% csrf_token %}
+
+                    <div class="grid grid-cols-1">
+                        <!-- Render Django form fields nicely -->
+                        {% for field in form %}
+                            <div>
+                                <label class="form-label font-bold">{{ field.label }}</label>
+                                {{ field }}
+                                {% if field.help_text %}
+                                    <small class="text-gray-500" >{{ field.help_text }}</small>
+                                {% endif %}
+                                {% for error in field.errors %}
+                                    <div class="text-red-500 text-sm mt-1" >{{ error }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <!-- Submit -->
+                    <div class="flex">
+                        <button type="submit" class="save-button">
+                            💾 Save Record
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
+{% endblock %}

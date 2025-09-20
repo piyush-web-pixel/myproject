@@ -1,0 +1,48 @@
+:root {
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --success: #10b981;
+    --accent: #f59e0b;
+    --warning: #ef4444;
+    --background: #f3f4f6;
+    --background-subtle: #f8fafc;
+    --card-background: #ffffff;
+    --foreground: #111827;
+    /* Darker text for general content */
+    --muted-foreground: #6b7280;
+    --border: #e5e7eb;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+    /* New variables for header gradient and text colors */
+    --header-gradient-start: #3B82F6;
+    /* Blue */
+    --header-gradient-end: #10B981;
+    /* Green */
+    --header-text-color: #ffffff;
+    --header-muted-text-color: #e0e7ff;
+    /* Lighter white/blue for subtext */
+
+    /* New variable for the shadow color on hover */
+    --stat-card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+    /* New variables for stat card gradients */
+    --primary-gradient: linear-gradient(135deg, #4f46e5 0%, #3f35c5 100%);
+    --success-gradient: linear-gradient(135deg, #10b981 0%, #0d966d 100%);
+    --accent-gradient: linear-gradient(135deg, #f59e0b 0%, #d88709 100%);
+    --warning-gradient: linear-gradient(135deg, #ef4444 0%, #d63d3d 100%);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    margin: 0;
+    color: var(--foreground);
+    /* Default body text color */
+    line-height: 1.5;
+;
+}
+

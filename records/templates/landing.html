@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kerala Health ID</title>
+    <link rel="stylesheet" href='{% static "css/landing.css" %}'>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-left">
+                <i class="ri-heart-line"></i>
+                <span>Kerala Health ID</span>
+            </div>
+            <div class="header-right">
+                <i class="ri-heart-line"></i>
+                <span>Kerala Digital Health Initiative</span>
+                <div class="language-selector">
+                    <span>English</span>
+                    <i class="ri-arrow-down-s-line"></i>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="text-section">
+                <h1 class="main-heading">
+                    Your Health, Your <br> Right &mdash;
+                    <span class="highlight">Anytime, Anywhere</span>
+                </h1>
+                <p class="description">
+                    Free digital health records for every migrant worker in Kerala. Access your medical history,
+                    connect with doctors, and manage your family's health &mdash; all in your language, all from your
+                    phone.
+                </p>
+                <div class="button-group">
+                    <button class="btn btn-primary">
+                        
+                        <a href="{% url 'register' %}" class="btn btn-secondary">Create Digital Health ID</a>
+                        
+                        <i class="ri-arrow-right-line"></i>
+                    </button>
+                    <button class="btn btn-secondary"> <a href="{% url 'login' %}" class="btn btn-secondary">Get Start</a></button>
+                    <button class="btn btn-tertiary">Learn More</button>
+                </div>
+                <div class="helpline-section">
+                    <i class="ri-phone-line"></i>
+                    <div>
+                        <span class="helpline-title">24/7 Helpline</span>
+                        <span class="helpline-number">1800-425-4425 (Toll Free)</span>
+                    </div>
+                </div>
+                <div class="security-info">
+                    <i class="ri-shield-check-line"></i>
+                    <span>Secure • Private • Free</span>
+                </div>
+            </div>
+            <div class="image-section">
+                <img src="{% static 'image/hero-image.jpg' %}" alt="Kerala Digital Health Initiative Illustration">
+            </div>
+        </main>
+
+        <section class="features-section">
+            <div class="built-for-you">
+                <i class="ri-heart-line"></i>
+                <span>Built for You</span>
+            </div>
+            <h2 class="features-title">Healthcare Made Simple</h2>
+            <p class="features-description">
+                Designed with migrant workers in mind &mdash; easy to use, available in your language, and accessible
+                from any phone. Your health, your control.
+            </p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon-box green-icon">
+                        <i class="ri-time-line"></i>
+                    </div>
+                    <h3 class="card-title">Instant Access to Health Records</h3>
+                    <p class="card-text">
+                        Get your medical history in seconds. No more lost papers or waiting in long queues.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-box blue-icon">
+                        <i class="ri-stethoscope-line"></i>
+                    </div>
+                    <h3 class="card-title">Doctor Connectivity</h3>
+                    <p class="card-text">
+                        Connect with healthcare providers across Kerala. Book appointments and get consultations.
+                    </p>
+                </div>
+                <div class="feature-card highlighted-card">
+                    <div class="icon-box orange-icon">
+                        <i class="ri-shield-line"></i>
+                    </div>
+                    <h3 class="card-title">Privacy & Security</h3>
+                    <p class="card-text">
+                        Bank-level security protects your health data. Only you control who sees your information.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-box light-green-icon">
+                        <i class="ri-leaf-line"></i>
+                    </div>
+                    <h3 class="card-title">Eco-Friendly (Paperless)</h3>
+                    <p class="card-text">
+                        Go green with digital records. Help save trees while keeping your health data organized.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-box gray-icon">
+                        <i class="ri-smartphone-line"></i>
+                    </div>
+                    <h3 class="card-title">Works on Any Phone</h3>
+                    <p class="card-text">
+                        Simple design that works on smartphones, basic phones, and tablets. No special app needed.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-box dark-orange-icon">
+                        <i class="ri-global-line"></i>
+                    </div>
+                    <h3 class="card-title">Your Language, Your Choice</h3>
+                    <p class="card-text">
+                        Available in 6 languages including Malayalam, Hindi, Bengali, Tamil, and Telugu.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="sdg-section">
+            <div class="sdg-header">
+                <div class="sdg-tag">
+                    <i class="ri-checkbox-circle-line"></i>
+                    <span>UN Sustainable Development Goals</span>
+                </div>
+                <h2 class="sdg-title">Real Impact, Global Standards</h2>
+                <p class="sdg-description">
+                    Our digital health initiative directly supports the United Nations Sustainable Development Goals,
+                    creating measurable impact for migrant workers and Kerala’s healthcare system.
+                </p>
+            </div>
+            <div class="sdg-cards-container">
+                <div class="sdg-card sdg-card-3">
+                    <div class="sdg-card-top">
+                        <span class="sdg-number">3</span>
+                        <i class="ri-arrow-right-circle-line"></i>
+                    </div>
+                    <h3 class="sdg-card-title">SDG 3: Good Health and Well-being</h3>
+                    <p class="sdg-card-subtitle">Ensure healthy lives and promote well-being for all.</p>
+                    <p class="sdg-card-text">
+                        Providing accessible digital healthcare to migrant workers, ensuring no one is left behind in
+                        Kerala's health system.
+                    </p>
+                    <div class="sdg-card-metric">
+                        <i class="ri-checkbox-circle-line"></i>
+                        <span>50,000+ workers registered</span>
+                    </div>
+                </div>
+                <div class="sdg-card sdg-card-10">
+                    <div class="sdg-card-top">
+                        <span class="sdg-number">10</span>
+                        <i class="ri-balance-line"></i>
+                    </div>
+                    <h3 class="sdg-card-title">SDG 10: Reduced Inequalities</h3>
+                    <p class="sdg-card-subtitle">Reduce inequality within and among countries.</p>
+                    <p class="sdg-card-text">
+                        Breaking barriers to healthcare access regardless of origin, language, or economic status.
+                    </p>
+                    <div class="sdg-card-metric">
+                        <i class="ri-checkbox-circle-line"></i>
+                        <span>6 languages supported</span>
+                    </div>
+                </div>
+                <div class="sdg-card sdg-card-16">
+                    <div class="sdg-card-top">
+                        <span class="sdg-number">16</span>
+                        <i class="ri-shield-line"></i>
+                    </div>
+                    <h3 class="sdg-card-title">SDG 16: Peace, Justice and Strong Institutions</h3>
+                    <p class="sdg-card-subtitle">Promote peaceful and inclusive societies.</p>
+                    <p class="sdg-card-text">
+                        Building transparent, accountable healthcare systems that serve everyone with dignity.
+                    </p>
+                    <div class="sdg-card-metric">
+                        <i class="ri-checkbox-circle-line"></i>
+                        <span>100% data privacy</span>
+                    </div>
+                </div>
+            </div>
+            <div class="sdg-footer">
+                <h3>Join the Movement for Health Equity</h3>
+                <p>
+                    Be part of Kerala's commitment to the UN Sustainable Development Goals. Every health record created
+                    helps build a more equitable healthcare system.
+                </p>
+            </div>
+        </section>
+
+
+        <section class="testimonial-section">
+            <div class="testimonial-header">
+                <div class="testimonial-tag">
+                    <i class="ri-heart-line"></i>
+                    <span>Real Stories</span>
+                </div>
+                <h2 class="testimonial-title">Lives Transformed, Voices Heard</h2>
+                <p class="testimonial-description">
+                    Real people sharing how digital health records changed their healthcare experience. These stories represent thousands of migrant workers across Kerala.
+                </p>
+            </div>
+            <div class="testimonial-cards-container">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                    </div>
+                    <div class="quote-icon">
+                        <i class="ri-double-quotes-l"></i>
+                    </div>
+                    <p class="quote-text">
+                        "Finally, no more carrying paper files everywhere! When I got injured at work, the doctor could see all my previous treatments in seconds. This saved my life."
+                    </p>
+                    <div class="author-info">
+                        <div class="author-avatar-group">
+                            <div class="author-avatar bg-avatar-ry">RY</div>
+                            <div class="author-details">
+                                <span class="author-name">Ramesh Yadav</span>
+                                <span class="author-occupation">Construction Worker</span>
+                            </div>
+                        </div>
+                        <div class="author-location-info">
+                            <i class="ri-map-pin-line"></i>
+                            <span>Kochi</span>
+                            <span>From Bihar</span>
+                        </div>
+                    </div>
+                    <div class="verified-user">
+                        <i class="ri-checkbox-circle-fill"></i>
+                        <span>Verified User</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                    </div>
+                    <div class="quote-icon">
+                        <i class="ri-double-quotes-l"></i>
+                    </div>
+                    <p class="quote-text">
+                        "This system transformed how we treat migrant workers. Complete medical history, medication allergies, chronic conditions &mdash; everything is available instantly."
+                    </p>
+                    <div class="author-info">
+                        <div class="author-avatar-group">
+                            <div class="author-avatar bg-avatar-am">AM</div>
+                            <div class="author-details">
+                                <span class="author-name">Dr. Anjali Menon</span>
+                                <span class="author-occupation">Government Medical Officer</span>
+                            </div>
+                        </div>
+                        <div class="author-location-info">
+                            <i class="ri-map-pin-line"></i>
+                            <span>Thiruvananthapuram</span>
+                            <span>Primary Healthcare Center</span>
+                        </div>
+                    </div>
+                    <div class="verified-user">
+                        <i class="ri-checkbox-circle-fill"></i>
+                        <span>Verified User</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                        <i class="ri-star-fill"></i>
+                    </div>
+                    <div class="quote-icon">
+                        <i class="ri-double-quotes-l"></i>
+                    </div>
+                    <p class="quote-text">
+                        "I can read everything in Bengali! My daughter helped me set it up, and now I manage health records for my whole family. The free service is a blessing."
+                    </p>
+                    <div class="author-info">
+                        <div class="author-avatar-group">
+                            <div class="author-avatar bg-avatar-sk">SK</div>
+                            <div class="author-details">
+                                <span class="author-name">Sultana Khatun</span>
+                                <span class="author-occupation">Domestic Worker</span>
+                            </div>
+                        </div>
+                        <div class="author-location-info">
+                            <i class="ri-map-pin-line"></i>
+                            <span>Kozhikode</span>
+                            <span>From West Bengal</span>
+                        </div>
+                    </div>
+                    <div class="verified-user">
+                        <i class="ri-checkbox-circle-fill"></i>
+                        <span>Verified User</span>
+                    </div>
+                </div>
+            </div>
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <span class="stat-number">50,000+</span>
+                    <span class="stat-label">Active Users</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">6</span>
+                    <span class="stat-label">Languages Supported</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Support Available</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Free Service</span>
+                </div>
+            </div>
+        </section>
+
+
+        <footer class="footer">
+            <div class="footer-top">
+                <div class="footer-column footer-branding">
+                    <div class="footer-logo">
+                        <i class="ri-heart-line"></i>
+                        <div>
+                            <h3>Kerala Health ID</h3>
+                            <span>Government of Kerala</span>
+                        </div>
+                    </div>
+                    <p>Department of Health & Family Welfare</p>
+                    <p>Digital Health Initiative for Migrant Workers</p>
+                    <p>Committed to accessible, inclusive healthcare for all residents of Kerala.</p>
+                    <div class="footer-badges">
+                        <div class="badge">
+                            <i class="ri-checkbox-circle-line"></i>
+                            <span>Government Approved</span>
+                        </div>
+                        <div class="badge">
+                            <i class="ri-checkbox-circle-line"></i>
+                            <span>UN SDG Aligned</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="ri-facebook-fill"></i></a>
+                        <a href="#"><i class="ri-twitter-fill"></i></a>
+                        <a href="#"><i class="ri-youtube-fill"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Get Started</h4>
+                    <ul>
+                        <li><a href="#"><i class="ri-heart-line"></i>Create Health ID</a></li>
+                        <li><a href="#"><i class="ri-login-box-line"></i>Login to Portal</a></li>
+                        <li><a href="#"><i class="ri-map-pin-line"></i>Find Healthcare Centers</a></li>
+                        <li><a href="#"><i class="ri-download-line"></i>Download App</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact & Support</h4>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="ri-phone-line"></i>
+                            <div>
+                                <span>24/7 Helpline</span>
+                                <p>1800-425-4425</p>
+                                <span>Toll Free • All Languages</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="ri-mail-line"></i>
+                            <span>help@keralahealthid.gov.in</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="ri-map-pin-2-line"></i>
+                            <span>Directorate of Health Services, Thiruvananthapuram 695001, Kerala</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="ri-global-line"></i>
+                            <span>www.health.kerala.gov.in</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2024 Government of Kerala. All rights reserved.</p>
+                    <p>Supporting UN Sustainable Development Goals 3, 10, and 16</p>
+                    <p>Digital India Initiative • Accessible Healthcare for All</p>
+                </div>
+                <div class="legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Accessibility Statement</a>
+                    <a href="#">RTI</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Doctor Panel Dashboard</h2>
+
+<h4>Welcome, Dr. {{ doctor.user.username }}</h4>
+<p>Specialization: {{ doctor.specialization }}</p>
+<p>Hospital: {{ doctor.hospital }}</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Aadhaar</th>
+      <th>Age</th>
+      <th>Gender</th>
+      <th>State</th>
+      <th>Contact</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for worker in workers %}
+    <tr>
+      <td>{{ worker.name }}</td>
+      <td>{{ worker.aadhaar_id }}</td>
+      <td>{{ worker.age }}</td>
+      <td>{{ worker.gender }}</td>
+      <td>{{ worker.state_of_origin }}</td>
+      <td>{{ worker.contact_number }}</td>
+      <td>
+        <a href="{% url 'doctor_edit_worker' worker.id %}" class="btn btn-sm btn-primary">Edit</a>
+      </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="7">No workers added yet.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

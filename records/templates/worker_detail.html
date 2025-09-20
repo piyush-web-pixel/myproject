@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ worker.name }} ({{ worker.aadhaar_id }})</h2>
+
+<div class="row mb-4">
+  <div class="col-md-6">
+    <ul class="list-group">
+      <li class="list-group-item"><strong>Age:</strong> {{ worker.age }}</li>
+      <li class="list-group-item"><strong>Gender:</strong> {{ worker.gender }}</li>
+      <li class="list-group-item"><strong>State:</strong> {{ worker.state_of_origin }}</li>
+      <li class="list-group-item"><strong>Contact:</strong> {{ worker.contact_number }}</li>
+    </ul>
+  </div>
+  <div class="col-md-6 text-center">
+    {% if worker.qr_code %}
+      <img src="{{ worker.qr_code.url }}" alt="QR Code" class="img-thumbnail" style="max-width:200px;">
+      <p class="mt-2">Scan this QR to access worker details</p>
+    {% endif %}
+  </div>
+</div>
+
+<h3>Health Records</h3>
+<a href="{% url 'add_health_record' worker.id %}" class="btn btn-sm btn-primary mb-3">Add Health Record</a>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Illness</th>
+      <th>Treatment</th>
+      <th>Doctor Notes</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for r in records %}
+    <tr>
+      <td>{{ r.date }}</td>
+      <td>{{ r.illness }}</td>
+      <td>{{ r.treatment }}</td>
+      <td>{{ r.doctor_notes }}</td>
+      <td>
+        <a href="{% url 'summarize_notes' r.id %}" class="btn btn-sm btn-warning">
+          Summarize Notes
+        </a>
+      </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="5" class="text-center">No health records yet</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

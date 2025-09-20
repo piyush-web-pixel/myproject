@@ -1,0 +1,206 @@
+<!-- <!DOCTYPE html>
+<html>
+  {% load static %}
+  <head>
+    <title>Doctor Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
+  </head>
+  <body>
+
+    header
+
+    <header class="dashboard-header">
+      <div class="header-content container">
+        <h1 class="font-extrabold">
+          <i data-lucide="heart" class="lucide-icon main-icon"></i>
+          Doctor Dashboard
+        </h1>
+        <div class="header-meta">
+          <span class="meta-item">
+            <i data-lucide="calendar" class="lucide-icon"></i>
+            {{ today }}
+          </span>
+          <span class="meta-item">
+            <i data-lucide="clipboard-list" class="lucide-icon"></i>
+            Healthcare Management System
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <div class="doctor">
+      <h1>Welcome, Dr. {{ doctor.user.username }}</h1>
+      <p>Specialization: {{ doctor.specialization }}</p>
+      <p>Hospital: {{ doctor.hospital }}</p>
+      <p>Phone: {{ doctor.phone }}</p>
+
+      <h3>Available Options:</h3>
+      <div class="feature">
+        <ul>
+          <li><a href="{% url 'worker_list' %}">View All Workers</a></li>
+          <li><a href="{% url 'doctor_bookings' %}">View Apointments</a></li>
+          <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+    
+  </body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard</title>
+    {% load static %}
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0fdf4; /* Light green background */
+            transition: background-color 0.3s ease;
+        }
+
+        .dashboard-header {
+            background-color: #419c64; /* Greenish theme color */
+            color: white;
+            padding: 2rem 1.5rem;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .main-icon {
+            animation: pulse-icon 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+        }
+
+        @keyframes pulse-icon {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+        a:hover {
+            color: black;
+            text-decoration:underline;
+        }
+        .doctor-panel {
+            background-color: white;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            padding: 2.5rem;
+            max-width: 900px;
+            margin: 2rem auto;
+            text-align: center;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: slide-up 0.8s forwards ease-out;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        @keyframes slide-up {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-link {
+            display: block;
+            background-color: #d1fae5; /* Lighter green */
+            color: #10b981;
+            font-weight: 600;
+            padding: 1.25rem;
+            border-radius: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transform: scale(1);
+        }
+        
+        .feature-link:hover {
+            background-color: #a7f3d0; /* Even lighter green on hover */
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h3 {
+            color: #166534; /* Dark green text */
+        }
+
+        .meta-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #d1fae5;
+        }
+
+        .lucide-icon {
+            stroke-width: 2.5;
+        }
+    </style>
+</head>
+<body class="p-6 md:p-10">
+
+    <!-- HEADER -->
+    <header class="dashboard-header rounded-b-3xl">
+        <div class="header-content">
+            <h1 class="font-extrabold text-3xl md:text-4xl flex items-center gap-2">
+                <i data-lucide="heart" class="lucide-icon w-8 h-8 md:w-10 md:h-10 main-icon"></i>
+                Doctor Dashboard
+            </h1>
+            <div class="header-meta flex flex-col md:flex-row gap-4 mt-4 md:mt-0 text-sm md:text-base">
+                <span class="meta-item">
+                    <i data-lucide="calendar" class="lucide-icon w-4 h-4"></i>
+                    {{ today }}
+                </span>
+                <span class="meta-item">
+                    <i data-lucide="clipboard-list" class="lucide-icon w-4 h-4"></i>
+                    Healthcare Management System
+                </span>
+                <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="doctor-panel">
+        <h1 class="text-3xl font-extrabold mb-2">Welcome, Dr. {{ doctor.user.username }}</h1>
+        <p class="text-gray-600 mb-1">Specialization: {{ doctor.specialization }}</p>
+        <p class="text-gray-600 mb-1">Hospital: {{ doctor.hospital }}</p>
+        <p class="text-gray-600">Phone: {{ doctor.phone }}</p>
+
+        <h3 class="text-2xl font-bold mt-8 mb-4">Available Options:</h3>
+        <div class="feature-list">
+            <a href="{% url 'worker_list' %}" class="feature-link">View All Workers</a>
+            <a href="{% url 'doctor_bookings' %}" class="feature-link">View Appointments</a>
+            <a href="{% url 'logout' %}" class="feature-link">Logout</a>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
+

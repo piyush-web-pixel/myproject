@@ -1,0 +1,25 @@
+# train_model.py
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+import pickle
+
+# 1. Load data
+data = pd.read_csv("health_data.csv")
+
+# 2. Split features and target
+X = data[['Age', 'BP', 'Sugar', 'Cholesterol', 'BMI']]
+y = data['Disease']
+
+# 3. Train-test split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# 4. Train model
+model = RandomForestClassifier(n_estimators=100)
+model.fit(X_train, y_train)
+
+# 5. Save model
+pickle.dump(model, open("disease_model.pkl", "wb"))
+
+# 6. Test accuracy
+print("Accuracy:", model.score(X_test, y_test))

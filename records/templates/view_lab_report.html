@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Lab Report Details</h2>
+
+  <h3>Original Report</h3>
+  <pre>{{ report.original_text }}</pre>
+
+  <h3>Summary (English)</h3>
+  <p>{{ report.summary_en }}</p>
+
+  <h3>सारांश (Hindi)</h3>
+  <p>{{ report.summary_hi }}</p>
+
+  <h3>സംഗ്രഹം (Malayalam)</h3>
+  <p>{{ report.summary_ml }}</p>
+
+  <a href="{% url 'lab_report_list' %}">⬅ Back to Reports</a>
+{% endblock %}

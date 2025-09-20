@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nearby Doctors & Hospitals</title>
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function showPosition(position) {
+            document.getElementById("lat").value = position.coords.latitude;
+            document.getElementById("lng").value = position.coords.longitude;
+        }
+
+        function showError(error) {
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                    alert("User denied the request for Geolocation.");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    alert("Location information is unavailable.");
+                    break;
+                case error.TIMEOUT:
+                    alert("The request to get user location timed out.");
+                    break;
+                default:
+                    alert("An unknown error occurred.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Search Nearby Healthcare</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        <label for="lat">Latitude:</label>
+        <input type="text" id="lat" name="lat" placeholder="Enter latitude" required>
+        <br><br>
+        <label for="lng">Longitude:</label>
+        <input type="text" id="lng" name="lng" placeholder="Enter longitude" required>
+        <br><br>
+        <button type="button" onclick="getLocation()">📍 Use My Location</button>
+        <br><br>
+        <button type="submit">Search</button>
+    </form>
+
+    <hr>
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+
+    <h2>Results:</h2>
+    <ul>
+        {% for place in results %}
+            <li>
+                <strong>{{ place.type }}: {{ place.name }}</strong><br>
+                Address: {{ place.address }}<br>
+                {% if place.rating %}
+                    Rating: {{ place.rating }}
+                {% endif %}
+            </li>
+        {% empty %}
+            <li>No doctors or hospitals found nearby.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

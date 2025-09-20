@@ -1,0 +1,40 @@
+<h2>Health Analysis for {{ record.worker.name }}</h2>
+
+<h3>Doctor Notes:</h3>
+<p>{{ record.doctor_notes }}</p>
+
+<h3>Detected Diseases:</h3>
+<ul>
+  {% for disease in diseases %}
+    <li>{{ disease }}</li>
+  {% empty %}
+    <li>No diseases detected.</li>
+  {% endfor %}
+</ul>
+
+<h3>Preventive Measures (English):</h3>
+<ul>
+  {% for disease, actions in prevention_en.items %}
+    <li><strong>{{ disease }}</strong>
+      <ul>{% for action in actions %}<li>{{ action }}</li>{% endfor %}</ul>
+    </li>
+  {% endfor %}
+</ul>
+
+<h3>Preventive Measures (Hindi):</h3>
+<ul>
+  {% for disease, actions in prevention_hi.items %}
+    <li><strong>{{ disease }}</strong>
+      <ul>{% for action in actions %}<li>{{ action }}</li>{% endfor %}</ul>
+    </li>
+  {% endfor %}
+</ul>
+
+<h3>Preventive Measures (Malayalam):</h3>
+<ul>
+  {% for disease, actions in prevention_ml.items %}
+    <li><strong>{{ disease }}</strong>
+      <ul>{% for action in actions %}<li>{{ action }}</li>{% endfor %}</ul>
+    </li>
+  {% endfor %}
+</ul>

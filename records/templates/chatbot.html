@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chatbot</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #43e97b, #38f9d7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .chat-container {
+      background: #fff;
+      padding: 20px;
+      width: 400px;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+    #messages {
+      height: 300px;
+      overflow-y: auto;
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+    }
+    .user { color: #2e7d32; margin: 5px 0; }
+    .bot { color: #1565c0; margin: 5px 0; }
+    input {
+      width: 70%;
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 8px;
+      background: #56ab2f;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #2e7d32;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <h2>💬 Chatbot</h2>
+    <div id="messages"></div>
+    <input type="text" id="userInput" placeholder="Type your message...">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+
+  <script>
+    function sendMessage() {
+      let userText = document.getElementById("userInput").value;
+      if (!userText) return;
+
+      let messagesDiv = document.getElementById("messages");
+      messagesDiv.innerHTML += `<p class="user"><b>You:</b> ${userText}</p>`;
+
+      fetch("{% url 'chatbot_api' %}", {
+        method: "POST",
+        headers: {
+          "X-CSRFToken": "{{ csrf_token }}",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({"message": userText})
+      })
+      .then(res => res.json())
+      .then(data => {
+        messagesDiv.innerHTML += `<p class="bot"><b>Bot:</b> ${data.reply}</p>`;
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+      });
+
+      document.getElementById("userInput").value = "";
+    }
+  </script>
+</body>
+</html>

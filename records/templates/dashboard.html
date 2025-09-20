@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lucide-icons/0.292.0/lucide.css"
+    integrity="sha512-VUX6uE2/JbWw1/3C4FpL1K6jW9yT6lM5/n/6G8qF7qK/r4/1j0a/hQW4C6nB7I0GfV/xG+x0QJ5yK6k+w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<body class="bg-gradient-subtle" style="background-color: #419c64">
+    <div class="main" style="background-color: aliceblue;">
+    <!-- HEADER -->
+    <header class="dashboard-header">
+        <div class="header-content container">
+            <h1 class="font-extrabold">
+                <i data-lucide="heart" class="lucide-icon main-icon"></i>
+                Healthcare Dashboard
+                
+            </h1>
+            <p class="header-description">Manage worker health records and appointments</p>
+            <div class="header-meta">
+                <span class="meta-item">
+                    <i data-lucide="calendar" class="lucide-icon"></i>
+                    {{ today }}
+                </span>
+                <span class="meta-item">
+                    <i data-lucide="clipboard-list" class="lucide-icon"></i>
+                    Healthcare Management System
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8 space-y-8">
+        <!-- STATS -->
+        <section class="grid stats-grid">
+            <div class="card stat-card primary">
+                <h3 class="stat-title">Total Workers</h3>
+                <p class="stat-value">{{ workers }}</p>
+            </div>
+            <div class="card stat-card success">
+                <h3 class="stat-title">Health Records</h3>
+                <p class="stat-value">{{ records }}</p>
+            </div>
+            <div class="card stat-card accent">
+                <h3 class="stat-title">Active Appointments</h3>
+                <p class="stat-value">{{ active_appointments }}5</p>
+            </div>
+            <div class="card stat-card warning">
+                <h3 class="stat-title">Available Docter</h3>
+                <p class="stat-value">{{ completed_treatments }}10</p>
+    
+            </div>
+        </section>
+        <!-- quick action heres -->
+
+
+
+<section class="animate-slide-up">
+  <div class="card shadow-card">
+    <div class="card-header">
+      <h2 class="card-title">Quick Actions</h2>
+    </div>
+    <div class="card-content">
+      <div class="grid quick-actions-grid"  id="quick-actions-container">
+
+
+
+
+        
+        <!-- Add New Worker -->
+        <a href="{% url 'add_worker' %}" class="quick-box clean">
+          <i class="bi bi-person-plus"></i>
+          <span>Add New Worker</span>
+        </a>
+
+        <!-- Create Record -->
+        <a href="{% url 'worker_list' %}" class="quick-box clean">
+          <i class="bi bi-file-earmark-text"></i>
+          <span>View worker</span>
+        </a>
+
+        <!-- Schedule Appointment -->
+        <a href="{% url 'book_booking' %}" class="quick-box clean">
+          <i class="bi bi-calendar-event"></i>
+          <span>Schedule Appointment</span>
+        </a>
+
+        <!-- Health Reports -->
+        <a href="{% url 'lab_report_list' %}" class="quick-box clean">
+          <i class="bi bi-activity"></i>
+          <span>Health Reports</span>
+        </a>
+    
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        <!-- RECENT RECORDS -->
+        <section>
+            <div class="card shadow-card">
+                <div class="card-header">
+                    <h2 class="card-title">Recent Health Records</h2>
+                </div>
+                <div class="card-content">
+                    <div class="records-table-container">
+                        <table class="records-table">
+                            <thead>
+                                <tr>
+                                    <th>Worker</th>
+                                    <th>Date</th>
+                                    <th>Illness</th>
+                                    <th>Treatment</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for r in recent %}
+                                <tr>
+                                    <td>{{ r.worker.name }}</td>
+                                    <td>{{ r.date }}</td>
+                                    <td>{{ r.illness }}</td>
+                                    <td>{{ r.treatment|truncatechars:40 }}</td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="4" class="text-center">No recent records</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>  
+            </div>
+        </section>
+
+       
+    <!-- Appointment Call to Action -->
+    <!-- <div class="appointment-cta text-center py-6">
+        <a href="{% url 'book_appointment' %}" class="btn-appointment">Book Appointment</a>
+    </div>
+</section> -->
+
+
+        <!-- EMERGENCY CTA -->
+        <section class="py-8 text-center animate-fade-in">
+            <div class="card shadow-card bg-gradient-subtle">
+                <div class="card-content p-8">
+                    <h3 class="text-2xl font-bold text-foreground mb-4">
+                        Need Medical Assistance?
+                    </h3>
+                    <p class="text-muted-foreground mb-6 max-w-2xl mx-auto">
+                        Our healthcare team is available 24/7 to provide emergency medical care and support.
+                    </p>
+                    <div class="flex button-group" style="align-items: center;  justify-content: space-around;">
+                        <div class="bottun" >
+                            <button class="btn btn-lg btn-appointment">
+                            <i data-lucide="alert-circle" class="lucide-icon"></i>
+                            Emergency Contact
+                        </button>
+                        </div>
+                        <div class="bottun2">
+                            <a href="{% url 'book_appointment' %}" class="btn btn-lg btn-outline">
+                            <i data-lucide="calendar" class="lucide-icon"></i>
+                            Schedule Consultation
+                        </a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    </div>
+</body>
+{% endblock %}
